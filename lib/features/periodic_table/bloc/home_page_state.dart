@@ -6,23 +6,23 @@ class HomePageState extends Equatable {
   @override
   List<Object> get props => [];
 }
-class HomePageInitial extends HomePageState {
+class PeriodicTableHomePageInitial extends HomePageState {
   @override
   List<Object> get props => [];
 }
-class HomePageLoading extends HomePageState {
+class PeriodicTableHomePageLoading extends HomePageState {
   @override
   List<Object> get props => [];
 }
-class UserDataHomePageSuccessState extends HomePageState {
-  PeriodicTableModel userInfo;
-  UserDataHomePageSuccessState(this.userInfo);
+class PeriodicTableDataHomePageSuccessState extends HomePageState {
+  PeriodicTableModel periodicTableModel;
+  PeriodicTableDataHomePageSuccessState(this.periodicTableModel);
   @override
-  List<Object> get props => [this.userInfo];
+  List<Object> get props => [this.periodicTableModel];
 }
-class HomePageFail extends HomePageState {
+class PeriodicTableHomePageFail extends HomePageState {
   final String error;
-  HomePageFail({this.error});
+  PeriodicTableHomePageFail({this.error});
   @override
   List<Object> get props => [this.error];
 }

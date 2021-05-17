@@ -28,7 +28,7 @@ EdgeInsets withMargin,withMarginText;
                   : MainAxisAlignment.start,
               mainAxisSize: MainAxisSize.max,
               children: [
-                Text(title,style: TextStyle(color: Colors.black,fontWeight: FontWeight.w600),),
+                title!=null? Text(title,style: TextStyle(color: Colors.black,fontWeight: FontWeight.w600),):SizedBox(),
                 withMoreButton
                     ? FlatButton(onPressed: () {}, child: Text("المزيد",style: TextStyle(color: Colors.blueAccent),))
                     : SizedBox()

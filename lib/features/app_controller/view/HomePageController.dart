@@ -1,14 +1,11 @@
 import 'package:flutter/material.dart';
 
-// import 'package:flutter_bloc/flutter_bloc.dart';
-// import 'package:intl/intl.dart';
 import 'package:sport_news/features/cultural_center/view/cultural_center_view.dart';
 import 'package:sport_news/features/main_home/view/MainHomePage.dart';
 import 'package:sport_news/features/more/view/MorePage.dart';
 import 'package:sport_news/features/periodic_table/view/periodic_table_view.dart';
 import 'package:sport_news/features/staticties/view/cultural_center_view.dart';
 
-// import 'HomeScreen.dart';
 
 class HomePageController extends StatefulWidget {
   String userName;
@@ -102,13 +99,7 @@ class _HomePageControllerState extends State<HomePageController> {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
     return Scaffold(
-      // appBar: AppBar(
-      //   title: Text("$_title"),
-      //   backgroundColor: Theme.of(context).primaryColor,
-      // ),
       bottomNavigationBar: buildBottomBar(context),
       body: _currentPage,
     );

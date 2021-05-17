@@ -1,15 +1,15 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
-import 'package:flutter/material.dart';
 
 import 'PeriodicTableModel.dart';
 
 class PeriodicTableRepo {
   Future<PeriodicTableModel> getUsers() async {
-    final url = "https://dummyapi.io/data/api/user";
+    final url = "https://reqres.in/api/users";
     try {
       final response = await http.get(
-        url,headers: {"app-id" : "602ac221ac5aaa7e77047aa2"},
+        url,
+        // headers: {"app-id" : "602ac221ac5aaa7e77047aa2"},
         // body: {
         //   "email": username,
         //   "password": password
