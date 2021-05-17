@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:sport_news/features/Utilities/localization/translation.dart';
 
 import 'package:sport_news/features/cultural_center/view/cultural_center_view.dart';
 import 'package:sport_news/features/main_home/view/MainHomePage.dart';
 import 'package:sport_news/features/more/view/MorePage.dart';
 import 'package:sport_news/features/periodic_table/view/periodic_table_view.dart';
-import 'package:sport_news/features/staticties/view/cultural_center_view.dart';
+import 'package:sport_news/features/staticties/view/statistics_view.dart';
 
+import '../../../main.dart';
 
 class HomePageController extends StatefulWidget {
   String userName;
@@ -21,10 +23,11 @@ class _HomePageControllerState extends State<HomePageController> {
 
   @override
   void initState() {
-    _incrementTab(0);
+    Future.delayed(Duration.zero, () {
+      _incrementTab(0);
+    });
   }
 
-  String _title;
   Widget _currentPage;
 
   PageController _pageController = PageController();
@@ -36,23 +39,18 @@ class _HomePageControllerState extends State<HomePageController> {
       //     duration: Duration(milliseconds: 500), curve: Curves.easeOut);
       switch (_selectedIndex) {
         case 0:
-          _title = "الصفحه الرئيسيه";
           _currentPage = MainHomePage();
           break;
         case 1:
-          _title = "الجدول الدوري";
           _currentPage = PeriodicPage();
           break;
         case 2:
-          _title = "المركز الاعلامي";
           _currentPage = CulturalCenterPage();
           break;
         case 3:
-          _title = "احصائيات كامله";
           _currentPage = StatisticsPage();
           break;
         case 4:
-          _title = "المزيد";
           _currentPage = MorePage();
           break;
       }
@@ -67,30 +65,30 @@ class _HomePageControllerState extends State<HomePageController> {
       type: BottomNavigationBarType.fixed,
       items: [
         BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          label: 'الصفحه الرئيسيه',
-        ),
+            icon: Icon(Icons.home),
+            label: getTranslated(context, 'home_page') ?? ""),
         BottomNavigationBarItem(
-            icon: Icon(Icons.view_comfortable), label: 'الجدول الدوري'),
+            icon: Icon(Icons.view_comfortable),
+            label: getTranslated(context, 'per_table') ?? ""),
         BottomNavigationBarItem(
             icon: Icon(Icons.business_center_rounded),
-            label: 'المركز الاعلامي'),
+            label: getTranslated(context, 'center') ?? ""),
         BottomNavigationBarItem(
-            icon: Icon(Icons.stacked_line_chart), label: 'احصائيات كامله'),
+            icon: Icon(Icons.stacked_line_chart),
+            label: getTranslated(context, 'statistics') ?? ""),
         BottomNavigationBarItem(
             icon: Icon(
               Icons.more_vert,
             ),
-            label: 'المزيد'),
+            label: getTranslated(context, 'more') ?? ""),
       ],
-
       selectedItemColor: Theme.of(context).accentColor,
       showUnselectedLabels: true,
       showSelectedLabels: true,
       unselectedFontSize: 12,
       selectedFontSize: 12,
       unselectedIconTheme: IconThemeData(color: Colors.white70),
-      selectedIconTheme: IconThemeData(color:  Colors.white),
+      selectedIconTheme: IconThemeData(color: Colors.white),
       unselectedLabelStyle: TextStyle(color: Colors.white70),
       selectedLabelStyle: TextStyle(color: Colors.white),
       unselectedItemColor: Colors.white70,

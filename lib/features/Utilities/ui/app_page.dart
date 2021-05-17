@@ -18,32 +18,29 @@ class AppPage extends StatelessWidget {
       backgroundColor: this.backgroundColor ?? Colors.transparent,
       extendBodyBehindAppBar: this.extendBodyBehindAppBar ?? false,
       appBar: withAppBar
-          ? PreferredSize(
-              preferredSize: Size.fromHeight(
-                  MediaQuery.of(context).size.height * (2 / 15)),
-              child: AppBar(
-                // title: Text('App Bar!'),
-                flexibleSpace: withImageInAppBar
-                    ? Image(
-                        image: AssetImage('images/app_bar.png'),
-                        fit: BoxFit.cover,
-                      )
-                    : Container(
-                        color: Colors.transparent,
-                        // fit: BoxFit.cover,
-                        // image: AssetImage(''),
-                      ),
-                leading: withBackButton
-                    ? IconButton(
-                        icon: Icon(Icons.arrow_back),
-                        onPressed: () {
-                          Navigator.pop(context);
-                        },
-                      )
-                    : SizedBox(),
-                backgroundColor: this.backgroundColor ?? Colors.transparent,
-              ),
-            )
+          ? AppBar(toolbarHeight: MediaQuery.of(context).size.height * (2 / 15),
+            elevation: 0,
+            // title: Text('App Bar!'),
+            flexibleSpace: withImageInAppBar
+                ? Image(
+                    image: AssetImage('images/app_bar.png'),
+                    fit: BoxFit.fill,
+                  )
+                : Container(
+                    color: Colors.transparent,
+                    // fit: BoxFit.cover,
+                    // image: AssetImage(''),
+                  ),
+            leading: withBackButton
+                ? IconButton(
+                    icon: Icon(Icons.arrow_back),
+                    onPressed: () {
+                      Navigator.pop(context);
+                    },
+                  )
+                : SizedBox(),
+            backgroundColor: this.backgroundColor ?? Colors.transparent,
+          )
           : null,
       resizeToAvoidBottomInset: true,
       resizeToAvoidBottomPadding: true,

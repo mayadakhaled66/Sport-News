@@ -1,7 +1,7 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:sport_news/features/Utilities/localization/translation.dart';
 import 'package:sport_news/features/Utilities/ui/app_page.dart';
 import 'package:sport_news/features/Utilities/ui/post_view.dart';
 import 'package:sport_news/features/main_home/model/HomeTeamModel.dart';
@@ -20,36 +20,36 @@ class _MainHomePageState extends State<MainHomePage> {
   List<HomeTeamSupporters> teamsSupportersList = [];
   List<LastPosts> lastPostsList = [];
 
-  @override
-  void initState() {
-    for (int counter = 0; counter < 3; counter++) {
-      teamsList.add(HomeTeamModel(
-          time: "22:00",
-          date: "الخميس 15 يوليو",
-          imagePath: "images/logo-club-foot-png-2@3x.png",
-          team1Name: "الأهلي",
-          team2Name: "الأهلي"));
-      teamsSupportersList.add(HomeTeamSupporters(
-          expectation: "%50",
-          imagePath: "images/logo-club-foot-png-2@3x.png",
-          teamName: "الأهلي"));
-    }
-    lastPostsList.add(LastPosts(
-        imagePath: "images/5TRrpRAGc@3x.png",
-        accountId: "@account",
-        teamName: "الدوري الرياضي",
-        details:
-            "عندما يريد العالم أن ‪يتكلّم ‬ ، فهو يتحدّث بلغة يونيكود. تسجّل الآن لحضور المؤتمر الدولي العاشر ليونيكود (Unicode Conference)، الذي سيعقد في 10-12 آذار 1997 بمدينة مَايِنْتْس، ألمانيا. "));
-    lastPostsList.add(LastPosts(
-        imagePath: "images/5TRrpRAGc@3x.png",
-        accountId: "@account",
-        teamName: "الدوري الرياضي",
-        details:
-            "عندما يريد العالم أن ‪يتكلّم ‬ ، فهو يتحدّث بلغة يونيكود. تسجّل الآن لحضور المؤتمر الدولي العاشر ليونيكود (Unicode Conference)، الذي سيعقد في 10-12 آذار 1997 بمدينة مَايِنْتْس، ألمانيا. "));
+setDataToList(){
+  teamsList.clear();
+  teamsSupportersList.clear();
+  lastPostsList.clear();
+  for (int counter = 0; counter < 3; counter++) {
+    teamsList.add(HomeTeamModel(
+        time: "22:00",
+        date: getTranslated(context, "date"),
+        imagePath: "images/logo-club-foot-png-2@3x.png",
+        team1Name:  getTranslated(context, "teamName"),
+        team2Name:  getTranslated(context, "teamName")));
+    teamsSupportersList.add(HomeTeamSupporters(
+        expectation: "%50",
+        imagePath: "images/logo-club-foot-png-2@3x.png",
+        teamName: getTranslated(context, "teamName")  ));
   }
-
+  lastPostsList.add(LastPosts(
+      imagePath: "images/5TRrpRAGc@3x.png",
+      accountId: "@account",
+      teamName: getTranslated(context, "sport_training"),
+      details: getTranslated(context, "details")));
+  lastPostsList.add(LastPosts(
+      imagePath: "images/5TRrpRAGc@3x.png",
+      accountId: "@account",
+      teamName: getTranslated(context, "sport_training"),
+      details:getTranslated(context, "details")));
+}
   @override
   Widget build(BuildContext context) {
+    setDataToList();
     return AppPage(
       SingleChildScrollView(
         child: Column(
@@ -71,7 +71,7 @@ class _MainHomePageState extends State<MainHomePage> {
     return PostCardView(
       withMargin: const EdgeInsets.all(0.0),
       withMoreButton: true,
-      title: "المباريات القادمة",
+      title: getTranslated(context, "coming_match"),
       moreCallBack: () {},
       cardContent: Column(
         children: [
@@ -209,19 +209,18 @@ class _MainHomePageState extends State<MainHomePage> {
   List<Widget> renderLastPostsList() {
     List<Widget> listOfLastPostsWidget = [];
     lastPostsList.forEach((element) {
-      listOfLastPostsWidget.add(
-          Row(
+      listOfLastPostsWidget.add(Row(
         children: [
           Container(
             // padding: EdgeInsets.symmetric(horizontal: 5, vertical: 15),
             height: MediaQuery.of(context).size.height * (2.5 / 10),
-            width: MediaQuery.of(context).size.width ,
+            width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(color: Colors.white),
             child: Column(
               children: [
                 Row(
                   children: [
-                     Padding(
+                    Padding(
                       padding: const EdgeInsets.all(8.0),
                       child: Image.asset(
                         element.imagePath,
@@ -233,23 +232,29 @@ class _MainHomePageState extends State<MainHomePage> {
                       children: [
                         Text(
                           element.teamName,
-                          style:
-                          TextStyle(color: Colors.black, fontWeight: FontWeight.w600),
+                          style: TextStyle(
+                              color: Colors.black, fontWeight: FontWeight.w600),
                         ),
-                         Text(element.accountId, style:
-                         TextStyle(color: Colors.black26, fontWeight: FontWeight.w600),),
+                        Text(
+                          element.accountId,
+                          style: TextStyle(
+                              color: Colors.black26,
+                              fontWeight: FontWeight.w600),
+                        ),
                       ],
                     ),
                   ],
                 ),
-                 Expanded(
-                   child: Padding(padding: const EdgeInsets.symmetric(horizontal: 10),
-                     child:Wrap(
-                    children: [
-                      Text(element.details),
-                    ],
-                ),),
-                 ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Wrap(
+                      children: [
+                        Text(element.details),
+                      ],
+                    ),
+                  ),
+                ),
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 30),
                   child: Divider(
@@ -260,7 +265,6 @@ class _MainHomePageState extends State<MainHomePage> {
               ],
             ),
           ),
-
         ],
       ));
     });
@@ -271,7 +275,7 @@ class _MainHomePageState extends State<MainHomePage> {
     return PostCardView(
       withMargin: const EdgeInsets.all(0.0),
       withMoreButton: false,
-      title: "توقع من هو الفائر",
+      title: getTranslated(context, "who_winner"),
       moreCallBack: () {},
       cardContent: Row(
         children: [
@@ -280,11 +284,12 @@ class _MainHomePageState extends State<MainHomePage> {
       ),
     );
   }
+
   buildLastPostWidget() {
     return PostCardView(
       withMargin: const EdgeInsets.all(0.0),
       withMoreButton: true,
-      title: "آخر التغريدات",
+      title: getTranslated(context, "last_posts"),
       moreCallBack: () {},
       cardContent: Column(
         children: [
@@ -293,10 +298,11 @@ class _MainHomePageState extends State<MainHomePage> {
       ),
     );
   }
+
   buildLastNewsWidget() {
     return PostCardView(
       withMoreButton: true,
-      title: "أخر الاخبار",
+      title: getTranslated(context, "last_news"),
       moreCallBack: () {},
       cardContent: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -333,11 +339,11 @@ class _MainHomePageState extends State<MainHomePage> {
             ),
           ),
           Text(
-            "الدوري الرياضي",
+            getTranslated(context, "sport_training"),
             style: TextStyle(color: Color(0xFF7C7575), fontSize: 14),
           ),
           Text(
-            "من الملاعب السعودية إلى منصة التتويج بكأس العالم..",
+            getTranslated(context, "details_title"),
             style: TextStyle(
                 color: Colors.black, fontSize: 14, fontWeight: FontWeight.w600),
           ),
@@ -349,7 +355,7 @@ class _MainHomePageState extends State<MainHomePage> {
   buildVideosWidget() {
     return PostCardView(
       withMoreButton: false,
-      title: "الفيديوهات",
+      title: getTranslated(context,"videos"),
       moreCallBack: () {},
       withMargin: const EdgeInsets.all(0.0),
       cardContent: Column(

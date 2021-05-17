@@ -1,6 +1,10 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:sport_news/features/Utilities/localization/Language.dart';
+import 'package:sport_news/features/Utilities/localization/translation.dart';
 import 'package:sport_news/features/Utilities/ui/app_page.dart';
+
+import '../../../main.dart';
 
 class MorePage extends StatefulWidget {
   @override
@@ -8,7 +12,6 @@ class MorePage extends StatefulWidget {
 }
 
 class _MorePageState extends State<MorePage> {
-  BuildContext _dialogContexts, dialogLoadingBuildContext;
   bool _switchValue=true;
   @override
   Widget build(BuildContext context) {
@@ -38,22 +41,23 @@ class _MorePageState extends State<MorePage> {
                 width: MediaQuery.of(context).size.width * (1 / 6),
               ),
             ),
-            buildTextWidget("دليل النوادي"),
-            buildTextWidget("دليل الملاعب"),
-            buildTextWidget("من نحن"),
-            buildTextWidget("الأنظمة واللوائح"),
-            buildTextWidget("اللجان"),
-            buildTextWidget("اتصل بنا"),
-            buildTextWidget("شارك التطبيق"),
-            buildTextWidget("الاشتراك بالنشرة الاخبارية"),
+            buildTextWidget("clubs_guide"),
+            buildTextWidget("guide"),
+            buildTextWidget("who_is_us"),
+            buildTextWidget("rules"),
+            buildTextWidget("rooms"),
+            buildTextWidget("call_us"),
+            buildTextWidget("share"),
+            buildTextWidget("subs"),
             Row(
               children: [
-                buildTextWidget(_switchValue?"العربيه":"English"),
+                buildTextWidget(_switchValue?"English":"العربيه"),
                 CupertinoSwitch(
                   value: _switchValue,
                   onChanged: (value) {
                     setState(() {
                       _switchValue = value;
+                      _changeLanguage(_switchValue?Language.languageList()[0]:Language.languageList()[1]);
                     });
                   },
                 ),
@@ -76,12 +80,15 @@ class _MorePageState extends State<MorePage> {
       ],
     );
   }
-
+  void _changeLanguage(Language language) async {
+    Locale _locale = await setLocale(language.languageCode);
+    MyHomePage.setLocale(context, _locale);
+  }
   buildTextWidget(String text) {
     return Padding(
       padding: const EdgeInsets.all(10.0).copyWith(right: 25),
       child: Text(
-        text,
+        getTranslated(context, text),
         style: TextStyle(
             color: Colors.white, fontWeight: FontWeight.w500, fontSize: 18),
       ),

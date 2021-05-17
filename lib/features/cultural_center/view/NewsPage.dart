@@ -1,8 +1,6 @@
-import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:sport_news/features/Utilities/ui/app_page.dart';
-import 'package:sport_news/features/Utilities/ui/post_view.dart';
+import 'package:sport_news/features/Utilities/localization/translation.dart';
 import 'package:sport_news/features/cultural_center/model/CardDataModel.dart';
 import 'package:sport_news/features/cultural_center/view/NewsDetailsPage.dart';
 
@@ -11,20 +9,21 @@ class NewsPage extends StatelessWidget {
 
   final List<CardDataModel> postCardList = [];
 
-  void initState() {
+  void initState(BuildContext context) {
     for (int counter = 0; counter < 7; counter++) {
       postCardList.add(CardDataModel(
-          details: "من الملاعب السعودية إلى منصة التتويج بكأس العالم..",
-          date: "12 يوليو 2018",
+          details: getTranslated(context, "details_title"),
+          date: getTranslated(context, "date"),
+          teamName: getTranslated(context, "sport_training"),
           imagePath:
               counter.isEven ? "images/img3@3x.png" : "images/img2@3x.png",
-          teamName: "الدوري الرياضي"));
+         ));
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    initState();
+    initState(context);
     return Container(
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
@@ -48,8 +47,7 @@ class NewsPage extends StatelessWidget {
                           title: element.details,
                           date: element.date,
                           imagePath: element.imagePath,
-                          details:
-                              "عندما يريد العالم أن ‪يتكلّم ‬ ، فهو يتحدّث بلغة يونيكود. تسجّل الآن لحضور المؤتمر الدولي العاشر ليونيكود (Unicode Conference)، الذي سيعقد في 10-12 آذار 1997 بمدينة مَايِنْتْس، ألمانيا. و سيجمع المؤتمر بين خبراء من كافة قطاعات الصناعة على الشبكة العالمية انترنيت ويونيكود، حيث ستتم، على الصعيدين الدولي والمحلي على حد سواء مناقشة سبل استخدام يونكود في النظم القائمة وفيما يخص التطبيقات الحاسوبية، الخطوط، تصميم النصوص والحوسبة متعددة اللغعندما يريد العالم أن ‪يتكلّم ‬ ، فهو يتحدّث بلغة يونيكود. تسجّل الآن لحضور المؤتمر الدولي العاشر ليونيكود (Unicode Conference)، الذي سيعقد في 10-12 آذار 1997 بمدينة مَايِنْتْس، ألمانيا. و سيجمع المؤتمر بين خبراء من كافة قطاعات الصناعة على الشبكة العالمية انترنيت ويونيكود، حيث ستتم، على الصعيدين الدولي والمحلي على حد سواء مناقشة سبل استخدام يونكود في النظم القائمة وفيما يخص التطبيقات الحاسوبية، الخطوط، تصميم النصوص والحوسبة متعددة اللغات.عندما يريد العالم أن ‪يتكلّم ‬ ، فهو يتحدّث بلغة يونيكود. تسجّل الآن لحضور المؤتمر الدولي العاشر ليونيكود (Unicode Conference)، الذي سيعقد في 10-12 آذار 1997 بمدينة مَايِنْتْس، ألمانيا. و سيجمع المؤتمر بين خبراء من كافة قطاعات الصناعة على الشبكة العالمية انترنيت ويونيكود، حيث ستتم، على الصعيدين الدولي والمحلي على حد سواء مناقشة سبل استخدام يونكود في النظم القائمة وفيما يخص التطبيقات الحاسوبية، الخطوط، تصميم النصوص والحوسبة متعددة اللغات.عندما يريد العالم أن ‪يتكلّم ‬ ، فهو يتحدّث بلغة يونيكود. تسجّل الآن لحضور المؤتمر الدولي العاشر ليونيكود (Unicode Conference)، الذي سيعقد في 10-12 آذار 1997 بمدينة مَايِنْتْس، ألمانيا. و سيجمع المؤتمر بين خبراء من كافة قطاعات الصناعة على الشبكة العالمية انترنيت ويونيكود، حيث ستتم، على الصعيدين الدولي والمحلي على حد سواء مناقشة سبل استخدام يونكود في النظم القائمة وفيما يخص التطبيقات الحاسوبية، الخطوط، تصميم النصوص والحوسبة متعددة اللغات.",
+                          details:getTranslated(context, "details_label"),
                           teamName: element.teamName,
                         )));
           },

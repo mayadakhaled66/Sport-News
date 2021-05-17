@@ -18,7 +18,6 @@ class NewsDetailsPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return AppPage(
       Container(
-        // padding: const EdgeInsets.all(20),
         color: Color(0xFFF3F3F3),
         child: SingleChildScrollView(
           child: Column(
@@ -85,7 +84,7 @@ class NewsDetailsPage extends StatelessWidget {
           child: Wrap(
             children: [
               Text(
-                details,
+                details??"",
                 style:
                     TextStyle(fontWeight: FontWeight.w500, color: Colors.black),
               ),

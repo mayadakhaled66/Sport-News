@@ -12,7 +12,7 @@ EdgeInsets withMargin,withMarginText;
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: withMargin??const EdgeInsets.all(15.0),
+      margin: withMargin??const EdgeInsets.all(15.0).copyWith(top: 20),
       width: MediaQuery.of(context).size.width,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,

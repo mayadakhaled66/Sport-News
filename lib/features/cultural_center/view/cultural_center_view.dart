@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:sport_news/features/Utilities/localization/translation.dart';
 import 'package:sport_news/features/Utilities/ui/app_page.dart';
-import 'package:sport_news/features/Utilities/ui/post_view.dart';
 import 'package:sport_news/features/cultural_center/model/CardDataModel.dart';
 
 import 'NewsPage.dart';
@@ -15,9 +15,9 @@ class CulturalCenterPage extends StatefulWidget {
 class _CulturalCenterPageState extends State<CulturalCenterPage>
     with TickerProviderStateMixin {
   List<Widget> list = [
-    Tab(text: "الاخبار"),
-    Tab(text: "الصور"),
-    Tab(text: "الفيديوهات"),
+    Tab(text:  "news"),
+    Tab(text: "photos"),
+    Tab(text: "videos"),
   ];
 
   final List<CardDataModel> postCardList = [];
@@ -27,22 +27,36 @@ class _CulturalCenterPageState extends State<CulturalCenterPage>
   @override
   void initState() {
     super.initState();
-    for (int counter = 0; counter < 5; counter++) {
-      postCardList.add(CardDataModel(
-          details: "من الملاعب السعودية إلى منصة التتويج بكأس العالم..",
-          date: "12 يوليو 2018",
-          imagePath: "images/img3@3x.png",
-          teamName: "الدوري الرياضي"));
-      _controller = TabController(length: list.length, vsync: this);
-      _controller.addListener(() {
-        setState(() {
-          _selectedIndex = _controller.index;
-        });
-        print("Selected Index: " + _controller.index.toString());
-      });
-    }
-  }
+    Future.delayed(Duration.zero, () {
 
+
+      setData();
+
+    });
+    _controller = TabController(length: list.length, vsync: this);
+    _controller.addListener(() {
+      setState(() {
+        _selectedIndex = _controller.index;
+      });
+      print("Selected Index: " + _controller.index.toString());
+    });
+  }
+setData(){
+  postCardList.clear();
+  list = [
+    Tab(text: getTranslated(context, "news")),
+    Tab(text: getTranslated(context, "photos")),
+    Tab(text: getTranslated(context, "videos")),
+  ];
+  for (int counter = 0; counter < 5; counter++) {
+    postCardList.add(CardDataModel(
+        details: getTranslated(context, "details_title"),
+        date: getTranslated(context, "date"),
+        imagePath: "images/img3@3x.png",
+        teamName: getTranslated(context, "sport_training")));
+
+  }
+}
   Widget getTapBarWidget(BuildContext context) {
     return TabBarView(
       controller: _controller,
@@ -56,6 +70,7 @@ class _CulturalCenterPageState extends State<CulturalCenterPage>
 
   @override
   Widget build(BuildContext context) {
+    setData();
     return AppPage(
       Container(
         child: Column(

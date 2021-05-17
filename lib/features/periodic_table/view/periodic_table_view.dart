@@ -19,8 +19,6 @@ class _PeriodicPageState extends State<PeriodicPage> {
 
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
     return BlocBuilder<HomePageBloc, HomePageState>(
       builder: (context, state) {
         return BlocListener<HomePageBloc, HomePageState>(
