@@ -139,23 +139,6 @@ class _PeriodicPageState extends State<PeriodicPage> {
                     Text("${element.id.toString()}"),
                   ],
                 ),
-                // Row(
-                //   crossAxisAlignment: CrossAxisAlignment.center,
-                //   mainAxisAlignment: MainAxisAlignment.start,
-                //   mainAxisSize: MainAxisSize.min,
-                //   children: [
-                //     Text(
-                //       element.team2Name,
-                //       style: TextStyle(
-                //           color: Colors.black, fontWeight: FontWeight.w600),
-                //     ),
-                //     Image.asset(
-                //       element.imagePath,
-                //       height: 50,
-                //       width: 50,
-                //     ),
-                //   ],
-                // ),
               ],
             ),
           ),

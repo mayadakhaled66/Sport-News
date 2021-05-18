@@ -12,7 +12,8 @@ class MorePage extends StatefulWidget {
 }
 
 class _MorePageState extends State<MorePage> {
-  bool _switchValue=true;
+  bool _switchValue = true;
+
   @override
   Widget build(BuildContext context) {
     return AppPage(
@@ -51,13 +52,15 @@ class _MorePageState extends State<MorePage> {
             buildTextWidget("subs"),
             Row(
               children: [
-                buildTextWidget(_switchValue?"English":"العربيه"),
+                buildTextWidget(_switchValue ? "English" : "العربيه"),
                 CupertinoSwitch(
                   value: _switchValue,
                   onChanged: (value) {
                     setState(() {
                       _switchValue = value;
-                      _changeLanguage(_switchValue?Language.languageList()[0]:Language.languageList()[1]);
+                      _changeLanguage(_switchValue
+                          ? Language.languageList()[0]
+                          : Language.languageList()[1]);
                     });
                   },
                 ),
@@ -80,10 +83,12 @@ class _MorePageState extends State<MorePage> {
       ],
     );
   }
+
   void _changeLanguage(Language language) async {
     Locale _locale = await setLocale(language.languageCode);
     MyHomePage.setLocale(context, _locale);
   }
+
   buildTextWidget(String text) {
     return Padding(
       padding: const EdgeInsets.all(10.0).copyWith(right: 25),

@@ -20,33 +20,34 @@ class _MainHomePageState extends State<MainHomePage> {
   List<HomeTeamSupporters> teamsSupportersList = [];
   List<LastPosts> lastPostsList = [];
 
-setDataToList(){
-  teamsList.clear();
-  teamsSupportersList.clear();
-  lastPostsList.clear();
-  for (int counter = 0; counter < 3; counter++) {
-    teamsList.add(HomeTeamModel(
-        time: "22:00",
-        date: getTranslated(context, "date"),
-        imagePath: "images/logo-club-foot-png-2@3x.png",
-        team1Name:  getTranslated(context, "teamName"),
-        team2Name:  getTranslated(context, "teamName")));
-    teamsSupportersList.add(HomeTeamSupporters(
-        expectation: "%50",
-        imagePath: "images/logo-club-foot-png-2@3x.png",
-        teamName: getTranslated(context, "teamName")  ));
+  setDataToList() {
+    teamsList.clear();
+    teamsSupportersList.clear();
+    lastPostsList.clear();
+    for (int counter = 0; counter < 3; counter++) {
+      teamsList.add(HomeTeamModel(
+          time: "22:00",
+          date: getTranslated(context, "date"),
+          imagePath: "images/logo-club-foot-png-2@3x.png",
+          team1Name: getTranslated(context, "teamName"),
+          team2Name: getTranslated(context, "teamName")));
+      teamsSupportersList.add(HomeTeamSupporters(
+          expectation: "%50",
+          imagePath: "images/logo-club-foot-png-2@3x.png",
+          teamName: getTranslated(context, "teamName")));
+    }
+    lastPostsList.add(LastPosts(
+        imagePath: "images/5TRrpRAGc@3x.png",
+        accountId: "@account",
+        teamName: getTranslated(context, "sport_training"),
+        details: getTranslated(context, "details")));
+    lastPostsList.add(LastPosts(
+        imagePath: "images/5TRrpRAGc@3x.png",
+        accountId: "@account",
+        teamName: getTranslated(context, "sport_training"),
+        details: getTranslated(context, "details")));
   }
-  lastPostsList.add(LastPosts(
-      imagePath: "images/5TRrpRAGc@3x.png",
-      accountId: "@account",
-      teamName: getTranslated(context, "sport_training"),
-      details: getTranslated(context, "details")));
-  lastPostsList.add(LastPosts(
-      imagePath: "images/5TRrpRAGc@3x.png",
-      accountId: "@account",
-      teamName: getTranslated(context, "sport_training"),
-      details:getTranslated(context, "details")));
-}
+
   @override
   Widget build(BuildContext context) {
     setDataToList();
@@ -158,7 +159,6 @@ setDataToList(){
         children: [
           Container(
             padding: EdgeInsets.symmetric(horizontal: 5, vertical: 15),
-            // height: MediaQuery.of(context).size.height * (1 / 15),
             width: MediaQuery.of(context).size.width / 3,
             decoration: BoxDecoration(color: Colors.white),
             child: Row(
@@ -212,7 +212,6 @@ setDataToList(){
       listOfLastPostsWidget.add(Row(
         children: [
           Container(
-            // padding: EdgeInsets.symmetric(horizontal: 5, vertical: 15),
             height: MediaQuery.of(context).size.height * (2.5 / 10),
             width: MediaQuery.of(context).size.width,
             decoration: BoxDecoration(color: Colors.white),
@@ -355,7 +354,7 @@ setDataToList(){
   buildVideosWidget() {
     return PostCardView(
       withMoreButton: false,
-      title: getTranslated(context,"videos"),
+      title: getTranslated(context, "videos"),
       moreCallBack: () {},
       withMargin: const EdgeInsets.all(0.0),
       cardContent: Column(

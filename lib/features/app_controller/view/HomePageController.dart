@@ -7,8 +7,6 @@ import 'package:sport_news/features/more/view/MorePage.dart';
 import 'package:sport_news/features/periodic_table/view/periodic_table_view.dart';
 import 'package:sport_news/features/staticties/view/statistics_view.dart';
 
-import '../../../main.dart';
-
 class HomePageController extends StatefulWidget {
   String userName;
 

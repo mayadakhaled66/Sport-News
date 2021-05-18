@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:sport_news/features/Utilities/localization/translation.dart';
 import 'package:sport_news/features/cultural_center/model/CardDataModel.dart';
@@ -12,12 +11,11 @@ class NewsPage extends StatelessWidget {
   void initState(BuildContext context) {
     for (int counter = 0; counter < 7; counter++) {
       postCardList.add(CardDataModel(
-          details: getTranslated(context, "details_title"),
-          date: getTranslated(context, "date"),
-          teamName: getTranslated(context, "sport_training"),
-          imagePath:
-              counter.isEven ? "images/img3@3x.png" : "images/img2@3x.png",
-         ));
+        details: getTranslated(context, "details_title"),
+        date: getTranslated(context, "date"),
+        teamName: getTranslated(context, "sport_training"),
+        imagePath: counter.isEven ? "images/img3@3x.png" : "images/img2@3x.png",
+      ));
     }
   }
 
@@ -41,15 +39,17 @@ class NewsPage extends StatelessWidget {
         child: GestureDetector(
           onTap: () {
             Navigator.push(
-                context,
-                MaterialPageRoute(
-                    builder: (context) => NewsDetailsPage(
-                          title: element.details,
-                          date: element.date,
-                          imagePath: element.imagePath,
-                          details:getTranslated(context, "details_label"),
-                          teamName: element.teamName,
-                        )));
+              context,
+              MaterialPageRoute(
+                builder: (context) => NewsDetailsPage(
+                  title: element.details,
+                  date: element.date,
+                  imagePath: element.imagePath,
+                  details: getTranslated(context, "details_label"),
+                  teamName: element.teamName,
+                ),
+              ),
+            );
           },
           child: Row(
             crossAxisAlignment: CrossAxisAlignment.center,
