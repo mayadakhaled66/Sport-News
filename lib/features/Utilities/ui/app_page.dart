@@ -23,10 +23,10 @@ class AppPage extends StatelessWidget {
             // title: Text('App Bar!'),
             flexibleSpace: withImageInAppBar
                 ? Image(
-                    image: AssetImage('images/app_bar.png'),
-                      fit: BoxFit.cover,
+                      image: AssetImage('images/app_bar.png'),
+                      fit: BoxFit.fill,
                     )
-                : Container(
+                  : Container(
                     color: Colors.transparent,
                     // fit: BoxFit.cover,
                     // image: AssetImage(''),
