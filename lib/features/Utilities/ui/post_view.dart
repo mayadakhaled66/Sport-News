@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:sport_news/features/Utilities/localization/translation.dart';
 
 class PostCardView extends StatelessWidget {
   String title;
@@ -30,7 +31,12 @@ EdgeInsets withMargin,withMarginText;
               children: [
                 title!=null? Text(title,style: TextStyle(color: Colors.black,fontWeight: FontWeight.w600),):SizedBox(),
                 withMoreButton
-                    ? FlatButton(onPressed: () {}, child: Text("المزيد",style: TextStyle(color: Colors.blueAccent),))
+                    ? FlatButton(
+                        onPressed: () {},
+                        child: Text(
+                          getTranslated(context, "more"),
+                          style: TextStyle(color: Colors.blueAccent),
+                        ))
                     : SizedBox()
               ],
             ),

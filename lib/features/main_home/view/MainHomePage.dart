@@ -59,7 +59,8 @@ class _MainHomePageState extends State<MainHomePage> {
             buildLastComingNewsWidget(),
             buildLastPostWidget(),
             buildExpectationWidget(),
-            buildVideosWidget()
+            buildVideosWidget(),
+            buildSupportersWidget()
           ],
         ),
       ),
@@ -280,6 +281,33 @@ class _MainHomePageState extends State<MainHomePage> {
         children: [
           ...renderTeamSupporterList(),
         ],
+      ),
+    );
+  }
+
+  buildSupportersWidget() {
+    return PostCardView(
+      withMargin: const EdgeInsets.all(0.0),
+      withMoreButton: false,
+      title: getTranslated(context, "Sponsors"),
+      moreCallBack: () {},
+      cardContent: Padding(
+        padding: const EdgeInsets.all(8.0),
+        child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 5, vertical: 15),
+          decoration: BoxDecoration(color: Colors.white),
+          child: Row(
+            children: [
+              Expanded(
+                  flex: 2, child: Image.asset("images/Symbol 2 – 1@3x.png")),
+              SizedBox(
+                width: 10,
+              ),
+              Expanded(
+                  flex: 2, child: Image.asset("images/Symbol 2 – 1@3x.png")),
+            ],
+          ),
+        ),
       ),
     );
   }

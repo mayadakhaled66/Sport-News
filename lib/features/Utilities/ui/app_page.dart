@@ -24,8 +24,8 @@ class AppPage extends StatelessWidget {
             flexibleSpace: withImageInAppBar
                 ? Image(
                     image: AssetImage('images/app_bar.png'),
-                    fit: BoxFit.fill,
-                  )
+                      fit: BoxFit.cover,
+                    )
                 : Container(
                     color: Colors.transparent,
                     // fit: BoxFit.cover,
